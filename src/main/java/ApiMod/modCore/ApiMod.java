@@ -1,5 +1,8 @@
 package ApiMod.modCore;
 
+import ApiMod.cards.basic.Defend;
+import ApiMod.cards.basic.Strike;
+import ApiMod.cards.ore.Coal;
 import ApiMod.characters.Api;
 import ApiMod.helpers.AssetPath;
 import basemod.AutoAdd;
@@ -58,10 +61,9 @@ public class ApiMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     //卡牌注册
     @Override
     public void receiveEditCards() {
-        new AutoAdd("ApiMod").packageFilter("ApiMod.cards").notPackageFilter("ApiMod.cards.abstractCards")
-                .setDefaultSeen(true).cards();
-
-
+        BaseMod.addCard(new Defend());
+        BaseMod.addCard(new Strike());
+        BaseMod.addCard(new Coal());
     }
 
     //本地化注册

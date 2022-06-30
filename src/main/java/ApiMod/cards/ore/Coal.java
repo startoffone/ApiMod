@@ -4,6 +4,7 @@ import ApiMod.cards.abstractCards.AbstractOre;
 
 import ApiMod.helpers.AssetId;
 import ApiMod.helpers.AssetPath;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -27,7 +28,7 @@ public class Coal extends AbstractOre {
     }
 
     @Override
-    public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        this.addToBot(new GainBlockAction(p, p, this.block));
     }
 }
