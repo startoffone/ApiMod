@@ -1,0 +1,17 @@
+{
+  "ApiMod:Strike": {
+    "NAME": "打击",
+    "DESCRIPTION": "造成 !D! 点伤害。",
+    "UPGRADE_DESCRIPTION": " 造成 !D! 点伤害"
+  },
+  "ApiMod:Defend": {
+    "NAME": "防御",
+    "DESCRIPTION": "获得 !B! 点格挡。",
+    "UPGRADE_DESCRIPTION": " 获得 !B! 点格挡"
+  },
+  "ApiMod:Coal": {
+    "NAME": "煤炭",
+    "DESCRIPTION": "获得 !B! 点格挡。",
+    "UPGRADE_DESCRIPTION": " 获得 !B! 点格挡"
+  }
+}

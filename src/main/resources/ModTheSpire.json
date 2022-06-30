@@ -1,0 +1,10 @@
+{
+  "modid": "ApiMod",
+  "name": "ApiMod",
+  "author_list": ["Daiyousei","雪之下雪奶酪","薛定谔大战西格玛"],
+  "description": "少年pimod",
+  "version": "0.0.1",
+  "sts_version": "03-07-2022",
+  "mts_version": "3.23.0",
+  "dependencies": ["basemod"]
+}
