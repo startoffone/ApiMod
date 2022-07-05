@@ -2,8 +2,7 @@ package ApiMod.characters;
 
 import ApiMod.cards.basic.Defend;
 import ApiMod.cards.basic.Strike;
-import ApiMod.helpers.AssetId;
-import ApiMod.helpers.AssetPath;
+import ApiMod.helpers.ModHelper;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -30,32 +29,34 @@ import static ApiMod.pathes.Enums.APi_CLASS;
 
 public class Api extends CustomPlayer {
     // 火堆的人物立绘（行动前）
-    private static final String MY_CHARACTER_SHOULDER_1 = AssetPath.makePath("img/char/shoulder2.png");
+    private static final String MY_CHARACTER_SHOULDER_1 = ModHelper.makePath("img/char/shoulder2.png");
     // 火堆的人物立绘（行动后）
-    private static final String MY_CHARACTER_SHOULDER_2 = AssetPath.makePath("img/char/shoulder1.png");
+    private static final String MY_CHARACTER_SHOULDER_2 = ModHelper.makePath("img/char/shoulder1.png");
     // 人物死亡图像
-    private static final String CORPSE_IMAGE = AssetPath.makePath("img/char/corpse.png");
+    private static final String CORPSE_IMAGE = ModHelper.makePath("img/char/corpse.png");
     // 战斗界面左下角能量图标的每个图层
     private static final String[] ORB_TEXTURES = new String[]{
-            AssetPath.makePath("img/UI/orb/EPanel/layer5.png"),
-            AssetPath.makePath("img/UI/orb/EPanel/layer4.png"),
-            AssetPath.makePath("img/UI/orb/EPanel/layer3.png"),
-            AssetPath.makePath("img/UI/orb/EPanel/layer2.png"),
-            AssetPath.makePath("img/UI/orb/EPanel/layer1.png"),
-            AssetPath.makePath("img/UI/orb/EPanel/layer0.png"),
-            AssetPath.makePath("img/UI/orb/EPanel/layer5d.png"),
-            AssetPath.makePath("img/UI/orb/EPanel/layer4d.png"),
-            AssetPath.makePath("img/UI/orb/EPanel/layer3d.png"),
-            AssetPath.makePath("img/UI/orb/EPanel/layer2d.png"),
-            AssetPath.makePath("img/UI/orb/EPanel/layer1d.png")
+            ModHelper.makePath("img/UI/orb/EPanel/layer5.png"),
+            ModHelper.makePath("img/UI/orb/EPanel/layer4.png"),
+            ModHelper.makePath("img/UI/orb/EPanel/layer3.png"),
+            ModHelper.makePath("img/UI/orb/EPanel/layer2.png"),
+            ModHelper.makePath("img/UI/orb/EPanel/layer1.png"),
+            ModHelper.makePath("img/UI/orb/EPanel/layer0.png"),
+            ModHelper.makePath("img/UI/orb/EPanel/layer5d.png"),
+            ModHelper.makePath("img/UI/orb/EPanel/layer4d.png"),
+            ModHelper.makePath("img/UI/orb/EPanel/layer3d.png"),
+            ModHelper.makePath("img/UI/orb/EPanel/layer2d.png"),
+            ModHelper.makePath("img/UI/orb/EPanel/layer1d.png")
     };
     // 每个图层的旋转速度
     private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
+    // 人物id
+    public static final String ID = ModHelper.makePath(Api.class.getSimpleName());
     // 人物的本地化文本
-    private static final CharacterStrings characterStrings = CardCrawlGame.languagePack
-            .getCharacterString(AssetId.makePath(Api.class.getSimpleName()));
+    private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.
+            getCharacterString(ID);
     //能量球特效
-    private static final String orbVfxPath = AssetPath.makePath("img/UI/orb/vfx.png");
+    private static final String orbVfxPath = ModHelper.makePath("img/UI/orb/vfx.png");
 
     public Api(String name) {
         super(name, APi_CLASS, ORB_TEXTURES, orbVfxPath, LAYER_SPEED, null, null);
@@ -75,8 +76,8 @@ public class Api extends CustomPlayer {
                 new EnergyManager(3) // 初始每回合的能量
         );
         // 人物动画
-        this.loadAnimation(AssetPath.makePath("img/char/MarisaModelv3.atlas"),
-                AssetPath.makePath("img/char/MarisaModelv3.json"), 1.8F);
+        this.loadAnimation(ModHelper.makePath("img/char/MarisaModelv3.atlas"),
+                ModHelper.makePath("img/char/MarisaModelv3.json"), 1.8F);
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
         this.stateData.setMix("Hit", "Idle", 0.1F);

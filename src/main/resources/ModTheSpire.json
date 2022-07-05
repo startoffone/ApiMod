@@ -5,6 +5,6 @@
   "description": "少年pimod",
   "version": "0.0.1",
   "sts_version": "03-07-2022",
-  "mts_version": "3.23.0",
+  "mts_version": "3.27.0",
   "dependencies": ["basemod"]
 }

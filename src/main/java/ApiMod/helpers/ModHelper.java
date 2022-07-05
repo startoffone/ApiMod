@@ -1,6 +1,6 @@
 package ApiMod.helpers;
 
-public interface AssetPath {
+public interface ModHelper {
     static String makePath(String path) {
         return "ApiMod/" + path;
     }

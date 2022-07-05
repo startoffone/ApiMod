@@ -1,9 +1,11 @@
 package ApiMod.cards.abstractCards;
 
-import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.localization.CardStrings;
+import static com.megacrit.cardcrawl.cards.AbstractCard.CardRarity.SPECIAL;
 
-public abstract class AbstractOre extends CustomCard {
-    public AbstractOre(String id, String name, String img, int cost, String rawDescription, CardType type, CardTarget target) {
-        super(id, name, img, cost, rawDescription, type, CardColor.COLORLESS, CardRarity.SPECIAL, target);
+public abstract class AbstractOre extends AbstractCard {
+
+    public AbstractOre(String ID, boolean useTmpArt, CardStrings strings, CardType TYPE, CardTarget TARGET) {
+        super(ID, useTmpArt, strings, 0, TYPE, CardColor.COLORLESS,SPECIAL, TARGET);
     }
 }
