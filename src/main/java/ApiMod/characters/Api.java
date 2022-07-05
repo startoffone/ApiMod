@@ -49,12 +49,11 @@ public class Api extends CustomPlayer {
             ModHelper.makePath("img/UI/orb/EPanel/layer1d.png")
     };
     // 每个图层的旋转速度
-    private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
-    // 人物id
-    public static final String ID = ModHelper.makePath(Api.class.getSimpleName());
+    private static final float[] LAYER_SPEED = new float[]
+            {-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
     // 人物的本地化文本
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.
-            getCharacterString(ID);
+            getCharacterString(ModHelper.makeId(Api.class.getSimpleName()));
     //能量球特效
     private static final String orbVfxPath = ModHelper.makePath("img/UI/orb/vfx.png");
 

@@ -11,7 +11,7 @@ import static com.megacrit.cardcrawl.cards.AbstractCard.CardType.SKILL;
 
 public class Defend extends AbstractCard {
     //获取类名作为id,前方添加mod前缀
-    public static final String ID = ModHelper.makePath(Defend.class.getSimpleName());
+    public static final String ID = ModHelper.makeId(Defend.class.getSimpleName());
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);//id获取本地化内容
 
     public Defend() {

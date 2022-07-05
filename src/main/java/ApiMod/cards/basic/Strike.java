@@ -7,12 +7,13 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import static com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect.SLASH_DIAGONAL;
 import static com.megacrit.cardcrawl.cards.AbstractCard.CardType.ATTACK;
 
 
 public class Strike extends AbstractCard {
     //获取类名作为id,前方添加mod前缀
-    public static final String ID = ModHelper.makePath(Strike.class.getSimpleName());
+    public static final String ID = ModHelper.makeId(Strike.class.getSimpleName());
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);//id获取本地化内容
 
     //装载信息
@@ -26,7 +27,7 @@ public class Strike extends AbstractCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        damageToEnemy(m, null);
+        damageToEnemy(m,SLASH_DIAGONAL );
     }
     @Override
     public void limitedUpgrade() {

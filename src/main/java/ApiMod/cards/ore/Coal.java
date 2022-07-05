@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class Coal extends AbstractOre {
-    public static final String ID = ModHelper.makePath(Coal.class.getSimpleName());
+    public static final String ID = ModHelper.makeId(Coal.class.getSimpleName());
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public Coal() {
