@@ -6,21 +6,22 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 
-public class Coal extends AbstractOre {
-    public static final String ID = ModHelper.makeId(Coal.class.getSimpleName());
+public class Sand extends AbstractOre {
+    public static final String ID = ModHelper.makeId(Sand.class.getSimpleName());
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
-
-    public Coal() {
-        super(ID, true, CARD_STRINGS, CardType.SKILL, CardTarget.SELF);
-        this.setupBlock(5);
+    public Sand() {
+        super(ID, true, CARD_STRINGS, CardType.SKILL, CardTarget.ENEMY);
+        this.setupMagicNumber(2);
     }
 
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {gainBlock();}
-
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        applyToMonster(m,new VulnerablePower(m,this.magicNumber,false));//给予易伤
+    }
     @Override
     public void limitedUpgrade() {
-        this.upgradeBlock(3);
+        this.upgradeMagicNumber(1);
     }
 }

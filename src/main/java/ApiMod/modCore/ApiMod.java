@@ -6,20 +6,26 @@ import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.interfaces.EditCardsSubscriber;
 import basemod.interfaces.EditCharactersSubscriber;
+import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.localization.Keyword;
+
+import java.nio.charset.StandardCharsets;
 
 import static ApiMod.pathes.Enums.APi_CLASS;
 import static ApiMod.pathes.Enums.APi_CARD;
 
 @SpireInitializer
-public class ApiMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber {
+public class ApiMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditKeywordsSubscriber {
     // 人物选择界面按钮的图片
     private static final String MY_CHARACTER_BUTTON = ModHelper.makePath("img/charSelect/testButton.png");
     // 人物选择界面的立绘
@@ -64,23 +70,39 @@ public class ApiMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
                 .cards();
 
     }
+    //读取本地语言
+    private Settings.GameLanguage languageRead(){
+        if (Settings.language == Settings.GameLanguage.ZHS) {
+            return Settings.language;
+        }
+        return Settings.GameLanguage.ENG;
+    }
 
     //本地化注册
     @Override
     public void receiveEditStrings() {
-        String lang;
-        if (Settings.language == Settings.GameLanguage.ZHS) {
-            lang = "ZHS";
-        } else {
-            lang = "ENG";
-        }
-        BaseMod.loadCustomStringsFile(CardStrings.class, "ApiMod/localization/" + lang + "/cards.json");
-        BaseMod.loadCustomStringsFile(CharacterStrings.class, "ApiMod/localization/" + lang + "/characters.json");
+        String lang= languageRead().toString();
+        BaseMod.loadCustomStringsFile(CardStrings.class, ModHelper.makePath("localization/" + lang + "/cards.json"));
+        BaseMod.loadCustomStringsFile(CharacterStrings.class,  ModHelper.makePath("localization/" + lang + "/characters.json"));
     }
 
     //人物注册
     @Override
     public void receiveEditCharacters() {
         BaseMod.addCharacter(new Api(CardCrawlGame.playerName), MY_CHARACTER_BUTTON, MY_CHARACTER_PORTRAIT, APi_CLASS);
+    }
+    //添加关键字
+    @Override
+    public void receiveEditKeywords() {
+        Gson gson = new Gson();
+        String lang= languageRead().toString();
+        String json = Gdx.files.internal(ModHelper.makePath("localization/" + lang + "/keywords.json"))
+                .readString(String.valueOf(StandardCharsets.UTF_8));
+        Keyword[] keywords = gson.fromJson(json, Keyword[].class);
+        if (keywords != null) {
+            for (Keyword keyword : keywords) {
+                BaseMod.addKeyword("api_mod", keyword.NAMES[0], keyword.NAMES, keyword.DESCRIPTION);
+            }
+        }
     }
 }

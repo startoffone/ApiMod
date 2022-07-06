@@ -24,10 +24,9 @@ public class Defend extends AbstractCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         gainBlock();
     }
+
     @Override
     public void limitedUpgrade() {
-        super.limitedUpgrade();
         this.upgradeBlock(3);
-        this.upgradeDescription(CARD_STRINGS);
     }
 }

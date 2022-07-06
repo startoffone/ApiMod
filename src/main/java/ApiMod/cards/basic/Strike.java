@@ -31,9 +31,7 @@ public class Strike extends AbstractCard {
     }
     @Override
     public void limitedUpgrade() {
-        super.limitedUpgrade();
         this.upgradeDamage(3);
-        this.upgradeDescription(CARD_STRINGS);
     }
 }
 

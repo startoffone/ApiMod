@@ -10,12 +10,14 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
+import static ApiMod.pathes.Enums.APi_CARD;
+
 public abstract class AbstractCard extends CustomCard {
     // 默认使用，useTmpArt表示是否使用测试卡图，当你卡图不够用时可以使用
     public AbstractCard(String ID, boolean useTmpArt, CardStrings strings, int COST, CardType TYPE,
                         CardRarity RARITY, CardTarget TARGET) {
         super(ID, strings.NAME, useTmpArt ? GetTmpImgPath(TYPE) : GetImgPath(TYPE, ID), COST, strings.DESCRIPTION, TYPE,
-                CardColor.valueOf("API_PINK"), RARITY, TARGET);
+                APi_CARD, RARITY, TARGET);
     }
 
     //非角色卡使用
@@ -123,9 +125,13 @@ public abstract class AbstractCard extends CustomCard {
         this.addToBot(new DrawCardAction(amt));
     }
 
-    // 直接给予玩家能力
+    //给予玩家自身能力
     public void applyToPlayer(AbstractPower power) {
         this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, power));
+    }
+    //给予怪物能力
+    public void applyToMonster(AbstractMonster m,AbstractPower power) {
+        this.addToBot(new ApplyPowerAction(m, AbstractDungeon.player, power));
     }
 
     //重写upgrade方法

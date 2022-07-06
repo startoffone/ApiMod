@@ -15,4 +15,7 @@ public class Enums {
     //在图书馆定义角色颜色标签
     @SpireEnum(name = "API_PINK")
     public static CardLibrary.LibraryType APi_LIBRARY;
+    //定义卡牌矿石tag
+    @SpireEnum
+    public static AbstractCard.CardTags Ore;
 }
