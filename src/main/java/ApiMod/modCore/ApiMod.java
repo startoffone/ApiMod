@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.localization.Keyword;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 
 import java.nio.charset.StandardCharsets;
 
@@ -84,6 +85,7 @@ public class ApiMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         String lang= languageRead().toString();
         BaseMod.loadCustomStringsFile(CardStrings.class, ModHelper.makePath("localization/" + lang + "/cards.json"));
         BaseMod.loadCustomStringsFile(CharacterStrings.class,  ModHelper.makePath("localization/" + lang + "/characters.json"));
+        BaseMod.loadCustomStringsFile(PowerStrings.class,  ModHelper.makePath("localization/" + lang + "/powers.json"));
     }
 
     //人物注册

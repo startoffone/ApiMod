@@ -13,8 +13,8 @@
   },
   "ApiMod:Stone": {
     "NAME": "石头",
-    "DESCRIPTION": " api_mod:矿石 NL 获得 !B! 点格挡。 NL 获得 !M! 点 力量 NL 消耗 ",
-    "UPGRADE_DESCRIPTION": " api_mod:矿石 NL 获得 !B! 点格挡。 NL 获得 !M! 点 力量 和 敏捷 NL 消耗 "
+    "DESCRIPTION": " api_mod:矿石 NL 获得 !B! 点格挡。 NL 获得 !M! 点 力量。 NL 消耗 ",
+    "UPGRADE_DESCRIPTION": " api_mod:矿石 NL 获得 !B! 点格挡。 NL 获得 !M! 点 力量 和 敏捷。 NL 消耗 "
   },
   "ApiMod:Sand": {
     "NAME": "沙子",
@@ -23,5 +23,15 @@
   "ApiMod:Fluorite": {
     "NAME": "萤石",
     "DESCRIPTION": " api_mod:矿石 NL 给予 !M! 层虚弱。 NL 消耗 "
+  },
+  "ApiMod:Pickaxe": {
+    "NAME": "石镐",
+    "DESCRIPTION": " api_mod:武器 NL 装备一把石镐。每回合获得 !M! 张 api_mod:矿石 （包括本回合）。",
+    "EXTENDED_DESCRIPTION": [
+      "铁镐",
+      "钻石镐",
+      " api_mod:武器 NL 装备一把铁镐,获得 !M! 层 api_mod:挖掘 。",
+      " api_mod:武器 NL 装备一把钻石镐,获得 !M! 层 api_mod:挖掘 。"
+    ]
   }
 }

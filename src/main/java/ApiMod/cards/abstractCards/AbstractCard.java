@@ -144,8 +144,6 @@ public abstract class AbstractCard extends CustomCard {
     }
 
     // 升级效果
-    public void limitedUpgrade() {
-
-    }
+    public abstract void limitedUpgrade() ;
 }
 
