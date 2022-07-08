@@ -12,7 +12,7 @@ public interface ModHelper {
     static String makeId(String id) {
         return "ApiMod:" + id;
     }
-
+    //填写匿名action
     static void addToBottom(Lambda func) {
         AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
             @Override
