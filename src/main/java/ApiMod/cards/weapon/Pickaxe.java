@@ -1,11 +1,9 @@
 package ApiMod.cards.weapon;
 
-
 import ApiMod.action.DigOre;
 import ApiMod.cards.abstractCards.AbstractWeapon;
 import ApiMod.helpers.ModHelper;
 import ApiMod.power.Dig;
-import ApiMod.power.Weapon;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -22,9 +20,9 @@ public class Pickaxe extends AbstractWeapon {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        applyToPlayer(new Weapon(p,this.name));
+        applyToPlayer(new ApiMod.power.Pickaxe(p,this.name));//给予镐子
         applyToPlayer(new Dig(p,timesUpgraded+1));//给予镐子等级的挖掘层数
-        addToBot(new DigOre(timesUpgraded+1));//给予镐子等级数量的矿石
+        addToBot(new DigOre(p,timesUpgraded+1));//给予镐子等级数量的矿石
     }
 
     @Override

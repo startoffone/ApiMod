@@ -7,11 +7,14 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
 public class Dig extends Power {
-    private static final String ID = ModHelper.makeId(Dig.class.getSimpleName());
-    private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(ID);
+    private static final String PowerID = ModHelper.makeId(Dig.class.getSimpleName());
+    private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(PowerID);
 
     public Dig(AbstractCreature Owner, int Amount) {
-        super(ID, powerStrings.NAME, PowerType.BUFF, Owner, Amount);
+        super(Amount);
+        this.ID=PowerID;
+        this.name=powerStrings.NAME;
+        this.owner=Owner;
         this.updateDescription();
     }
     // 重写能力更新时的修改描述方法
@@ -22,7 +25,7 @@ public class Dig extends Power {
     // 回合开始时，添加挖矿动作
     @Override
     public void atStartOfTurn() {
-        this.addToBot(new DigOre(this.amount));
+        this.addToBot(new DigOre(this.owner,this.amount));
     }
 
 }

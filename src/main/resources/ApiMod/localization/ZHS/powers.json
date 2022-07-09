@@ -5,10 +5,9 @@
       "回合开始时，获得 #b%d 张 #y矿石 。"
     ]
   },
-  "ApiMod:Weapon": {
-    "NAME": "武器",
+  "ApiMod:Pickaxe": {
+    "NAME": "石镐",
     "DESCRIPTIONS": [
-      "%s，",
       "每回合获得 #b%d 张 #y矿石 。",
       "每回合获得 #b%d 张 #y矿石 ，可以获得罕见的 #y矿石 。",
       "每回合获得 #b%d 张 #y矿石 ，可以获得稀有 #y矿石 。"
