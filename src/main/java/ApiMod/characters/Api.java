@@ -2,7 +2,8 @@ package ApiMod.characters;
 
 import ApiMod.cards.basic.Defend;
 import ApiMod.cards.basic.Strike;
-import ApiMod.helpers.ModHelper;
+import ApiMod.core.ApiMod;
+import ApiMod.patches.Enums;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -23,42 +24,37 @@ import com.megacrit.cardcrawl.screens.CharSelectInfo;
 
 import java.util.ArrayList;
 
-import static ApiMod.modCore.ApiMod.API_COLOR;
-import static ApiMod.pathes.Enums.APi_CARD;
-import static ApiMod.pathes.Enums.APi_CLASS;
+import static ApiMod.core.ApiMod.API_COLOR;
+import static ApiMod.patches.Enums.APi_CARD;
 
 public class Api extends CustomPlayer {
-    // 火堆的人物立绘（行动前）
-    private static final String MY_CHARACTER_SHOULDER_1 = ModHelper.makePath("img/char/shoulder2.png");
-    // 火堆的人物立绘（行动后）
-    private static final String MY_CHARACTER_SHOULDER_2 = ModHelper.makePath("img/char/shoulder1.png");
-    // 人物死亡图像
-    private static final String CORPSE_IMAGE = ModHelper.makePath("img/char/corpse.png");
+
     // 战斗界面左下角能量图标的每个图层
     private static final String[] ORB_TEXTURES = new String[]{
-            ModHelper.makePath("img/UI/orb/EPanel/layer5.png"),
-            ModHelper.makePath("img/UI/orb/EPanel/layer4.png"),
-            ModHelper.makePath("img/UI/orb/EPanel/layer3.png"),
-            ModHelper.makePath("img/UI/orb/EPanel/layer2.png"),
-            ModHelper.makePath("img/UI/orb/EPanel/layer1.png"),
-            ModHelper.makePath("img/UI/orb/EPanel/layer0.png"),
-            ModHelper.makePath("img/UI/orb/EPanel/layer5d.png"),
-            ModHelper.makePath("img/UI/orb/EPanel/layer4d.png"),
-            ModHelper.makePath("img/UI/orb/EPanel/layer3d.png"),
-            ModHelper.makePath("img/UI/orb/EPanel/layer2d.png"),
-            ModHelper.makePath("img/UI/orb/EPanel/layer1d.png")
+            ApiMod.assetPath("img/UI/orb/EPanel/layer5.png"),
+            ApiMod.assetPath("img/UI/orb/EPanel/layer4.png"),
+            ApiMod.assetPath("img/UI/orb/EPanel/layer3.png"),
+            ApiMod.assetPath("img/UI/orb/EPanel/layer2.png"),
+            ApiMod.assetPath("img/UI/orb/EPanel/layer1.png"),
+            ApiMod.assetPath("img/UI/orb/EPanel/layer0.png"),
+            ApiMod.assetPath("img/UI/orb/EPanel/layer5d.png"),
+            ApiMod.assetPath("img/UI/orb/EPanel/layer4d.png"),
+            ApiMod.assetPath("img/UI/orb/EPanel/layer3d.png"),
+            ApiMod.assetPath("img/UI/orb/EPanel/layer2d.png"),
+            ApiMod.assetPath("img/UI/orb/EPanel/layer1d.png")
     };
     // 每个图层的旋转速度
     private static final float[] LAYER_SPEED = new float[]
             {-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
     // 人物的本地化文本
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.
-            getCharacterString(ModHelper.makeId(Api.class.getSimpleName()));
-    //能量球特效
-    private static final String orbVfxPath = ModHelper.makePath("img/UI/orb/vfx.png");
+            getCharacterString(ApiMod.makeID("Api"));
 
     public Api(String name) {
-        super(name, APi_CLASS, ORB_TEXTURES, orbVfxPath, LAYER_SPEED, null, null);
+        super(name, Enums.APi_CLASS, ORB_TEXTURES,
+                //能量球特效
+                ApiMod.assetPath("img/UI/orb/vfx.png"),
+                LAYER_SPEED, null, null);
 
         // 人物对话气泡的大小（libgdx的坐标轴左下为原点）
         this.dialogX = (this.drawX + 0.0F * Settings.scale);
@@ -66,17 +62,23 @@ public class Api extends CustomPlayer {
 
         //人物初始设置
         this.initializeClass(
-                null, // 人物图片
-                MY_CHARACTER_SHOULDER_2, MY_CHARACTER_SHOULDER_1,
-                CORPSE_IMAGE, // 人物死亡图像
+                // 人物图片
+                null,
+                // 火堆的人物立绘（行动前）
+                ApiMod.assetPath("img/char/shoulder2.png"),
+                // 火堆的人物立绘（行动后）
+                ApiMod.assetPath("img/char/shoulder1.png"),
+                // 人物死亡图像
+                ApiMod.assetPath("img/char/corpse.png"),
                 this.getLoadout(),
                 0.0F, 0.0F,
                 200.0F, 220.0F, // 人物碰撞箱大小，越大的人物模型这个越大
                 new EnergyManager(3) // 初始每回合的能量
         );
         // 人物动画
-        this.loadAnimation(ModHelper.makePath("img/char/MarisaModelv3.atlas"),
-                ModHelper.makePath("img/char/MarisaModelv3.json"), 1.8F);
+        this.loadAnimation(ApiMod.assetPath("img/char/MarisaModelv3.atlas"),
+                ApiMod.assetPath("img/char/MarisaModelv3.json"), 1.8F);
+
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
         e.setTime(e.getEndTime() * MathUtils.random());
         this.stateData.setMix("Hit", "Idle", 0.1F);

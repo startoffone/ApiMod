@@ -1,4 +1,4 @@
-package ApiMod.pathes;
+package ApiMod.patches;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -18,6 +18,12 @@ public class Enums {
     //定义卡牌标签矿石
     @SpireEnum
     public static AbstractCard.CardTags Ore;
+    @SpireEnum
+    public static AbstractCard.CardTags Ore_Stone;
+    @SpireEnum
+    public static AbstractCard.CardTags Ore_Iron;
+    @SpireEnum
+    public static AbstractCard.CardTags Ore_Diamond;
     //定义卡牌标签武器
     @SpireEnum
     public static AbstractCard.CardTags Weapon;

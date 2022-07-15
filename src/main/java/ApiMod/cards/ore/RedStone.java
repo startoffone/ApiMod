@@ -3,28 +3,29 @@ package ApiMod.cards.ore;
 import ApiMod.cards.abstractCards.AbstractOre;
 import ApiMod.core.ApiMod;
 import ApiMod.patches.Enums;
-import com.megacrit.cardcrawl.actions.common.GainGoldAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
 
-public class Gold extends AbstractOre {
-    public static final String ID = ApiMod.makeID("Gold");
+public class RedStone extends AbstractOre {
+    public static final String ID = ApiMod.makeID("RedStone");
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
-    public Gold() {
+
+    public RedStone() {
         super(ID, true, CARD_STRINGS, CardType.SKILL, CardTarget.SELF);
-        this.setupMagicNumber(10);
+        setupMagicNumber(1);
         this.tags.add(Enums.Ore_Iron);
     }
 
     @Override
     public void limitedUpgrade() {
-        this.upgradeMagicNumber(5);
+        this.upgradeMagicNumber(1);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainGoldAction(this.magicNumber));
+        applyToPlayer(new ArtifactPower(p,this.magicNumber));
     }
 }

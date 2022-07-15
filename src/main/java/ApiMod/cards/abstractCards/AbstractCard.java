@@ -1,6 +1,6 @@
 package ApiMod.cards.abstractCards;
 
-import ApiMod.helpers.ModHelper;
+import ApiMod.core.ApiMod;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import static ApiMod.pathes.Enums.APi_CARD;
+import static ApiMod.patches.Enums.APi_CARD;
 
 public abstract class AbstractCard extends CustomCard {
     // 默认使用，useTmpArt表示是否使用测试卡图，当你卡图不够用时可以使用
@@ -49,7 +49,7 @@ public abstract class AbstractCard extends CustomCard {
             default:
                 throw new IllegalStateException("Unexpected value: " + t);
         }
-        return String.format(ModHelper.makePath("img/cards/test_%s.png"), type);
+        return String.format(ApiMod.assetPath("img/cards/test_%s.png"), type);
     }
 
     //如果实现这个方法，只要将相应类型的卡牌丢进相应文件夹即可，如攻击牌卡图添加进img/cards/attack/下
@@ -74,7 +74,7 @@ public abstract class AbstractCard extends CustomCard {
             default:
                 throw new IllegalStateException("Unexpected value: " + t);
         }
-        return String.format(ModHelper.makePath("img/cards/%s/%s.png"), type, name.replace(ModHelper.makePath(""), ""));
+        return String.format(ApiMod.assetPath("img/cards/%s/%s.png"), type, name.replace(ApiMod.assetPath(""), ""));
     }
 
     //以下三个方法可以快速设置伤害格挡特殊值的基础数值

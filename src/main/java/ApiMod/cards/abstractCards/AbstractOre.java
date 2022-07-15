@@ -2,7 +2,7 @@ package ApiMod.cards.abstractCards;
 
 import com.megacrit.cardcrawl.localization.CardStrings;
 
-import static ApiMod.pathes.Enums.Ore;
+import static ApiMod.patches.Enums.Ore;
 import static com.megacrit.cardcrawl.cards.AbstractCard.CardRarity.SPECIAL;
 
 public abstract class AbstractOre extends AbstractCard {

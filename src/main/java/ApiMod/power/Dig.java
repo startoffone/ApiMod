@@ -1,17 +1,18 @@
 package ApiMod.power;
 
 import ApiMod.action.DigOre;
-import ApiMod.helpers.ModHelper;
+import ApiMod.core.ApiMod;
+import ApiMod.power.abstractPower.Power;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
 public class Dig extends Power {
-    private static final String PowerID = ModHelper.makeId(Dig.class.getSimpleName());
+    public static final String PowerID = ApiMod.makeID("Dig");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(PowerID);
 
     public Dig(AbstractCreature Owner, int Amount) {
-        super(Amount);
+        this.amount=Amount;
         this.ID=PowerID;
         this.name=powerStrings.NAME;
         this.owner=Owner;

@@ -1,7 +1,8 @@
 package ApiMod.cards.ore;
 
 import ApiMod.cards.abstractCards.AbstractOre;
-import ApiMod.helpers.ModHelper;
+import ApiMod.core.ApiMod;
+import ApiMod.patches.Enums;
 import com.megacrit.cardcrawl.actions.common.GainGoldAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,11 +13,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import static com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect.SLASH_DIAGONAL;
 
 public class Diamond extends AbstractOre {
-    public static final String ID = ModHelper.makeId(Diamond.class.getSimpleName());
+    public static final String ID = ApiMod.makeID("Diamond");
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
     public Diamond() {
         super(ID, true, CARD_STRINGS, AbstractCard.CardType.ATTACK, AbstractCard.CardTarget.ENEMY);
         this.setupDamage(5);
+        this.tags.add(Enums.Ore_Iron);
     }
 
     @Override

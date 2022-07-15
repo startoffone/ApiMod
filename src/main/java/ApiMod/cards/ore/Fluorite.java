@@ -1,7 +1,8 @@
 package ApiMod.cards.ore;
 
 import ApiMod.cards.abstractCards.AbstractOre;
-import ApiMod.helpers.ModHelper;
+import ApiMod.core.ApiMod;
+import ApiMod.patches.Enums;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -9,11 +10,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
 public class Fluorite extends AbstractOre {
-    public static final String ID = ModHelper.makeId(Fluorite.class.getSimpleName());
+    public static final String ID = ApiMod.makeID("Fluorite");
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
     public Fluorite() {
         super(ID, true, CARD_STRINGS, CardType.SKILL, CardTarget.ENEMY);
         this.setupMagicNumber(2);
+        this.tags.add(Enums.Ore_Stone);
     }
 
     @Override
