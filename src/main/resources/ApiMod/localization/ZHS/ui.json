@@ -1,5 +1,7 @@
 {
-  "ApiMod:DiscoverCardByTags": {
-    "TEXT": ["选择一张武器牌"]
+  "ApiMod:SmeltAction": {
+    "TEXT": [
+      "消耗"
+    ]
   }
 }

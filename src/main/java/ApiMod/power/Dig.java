@@ -1,6 +1,6 @@
 package ApiMod.power;
 
-import ApiMod.action.DigOre;
+import ApiMod.action.common.DigOre;
 import ApiMod.core.ApiMod;
 import ApiMod.power.abstractPower.Power;
 import com.megacrit.cardcrawl.core.AbstractCreature;

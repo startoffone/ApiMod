@@ -1,9 +1,9 @@
 package ApiMod.cards.ore;
 
-import ApiMod.action.SelectCardToHand;
+import ApiMod.action.common.SelectCardToHand;
 import ApiMod.cards.abstractCards.AbstractOre;
 import ApiMod.core.ApiMod;
-import ApiMod.helpers.CardHelper;
+import ApiMod.helpers.GetPool;
 import ApiMod.patches.Enums;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -26,6 +26,6 @@ public class Emerald extends AbstractOre {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SelectCardToHand(CardHelper.returnTrulyRandomCardInCombat(Enums.Weapon,3),this.upgraded));
+        addToBot(new SelectCardToHand(new GetPool().returnTrulyRandomCardInCombat(Enums.Weapon,3),this.upgraded));
     }
 }
