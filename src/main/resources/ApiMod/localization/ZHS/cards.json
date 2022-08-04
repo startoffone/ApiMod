@@ -5,74 +5,143 @@
   },
   "ApiMod:Defend": {
     "NAME": "防御",
-    "DESCRIPTION": "获得 !B! 点格挡。"
+    "DESCRIPTION": "获得 !B! 点 格挡 。"
   },
+
+
+
+
+
   "ApiMod:Coal": {
     "NAME": "煤炭",
-    "DESCRIPTION": " api_mod:矿石 。 NL 获得 !B! 点格挡。 NL 消耗 。"
+    "DESCRIPTION": "获得 !B! 点 格挡 。",
+    "EXTENDED_DESCRIPTION": [
+      "漆黑的"
+    ]
   },
   "ApiMod:Stone": {
     "NAME": "石头",
-    "DESCRIPTION": " api_mod:矿石 。 NL 获得 !B! 点格挡。 NL 获得 !M! 点 力量。 NL 消耗 。",
-    "UPGRADE_DESCRIPTION": " api_mod:矿石 。 NL 获得 !B! 点格挡。 NL 获得 !M! 点 力量 和 敏捷。 NL 消耗 。"
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL 获得 !M! 点 力量。",
+    "UPGRADE_DESCRIPTION": "获得 !B! 点 格挡 。 NL 获得 !M! 点 力量 和 敏捷 。",
+    "EXTENDED_DESCRIPTION": [
+      "结实的"
+    ]
   },
   "ApiMod:Sand": {
     "NAME": "沙子",
-    "DESCRIPTION": " api_mod:矿石 。 NL 给予 !M! 层 易伤 。 NL 消耗 。"
+    "DESCRIPTION": "给予 !M! 层 易伤 。",
+    "EXTENDED_DESCRIPTION": [
+      "颗粒的"
+    ]
   },
   "ApiMod:Fluorite": {
     "NAME": "萤石",
-    "DESCRIPTION": " api_mod:矿石 。 NL 给予 !M! 层 虚弱 。 NL 消耗 。"
+    "DESCRIPTION": "给予 !M! 层 虚弱 。",
+    "EXTENDED_DESCRIPTION": [
+      "发光的"
+    ]
   },
   "ApiMod:SilverFish": {
     "NAME": "蠹虫",
-    "DESCRIPTION": " api_mod:矿石 。 NL 虚无 。"
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "蠕动的"
+    ]
   },
   "ApiMod:Iron": {
     "NAME": "铁",
-    "DESCRIPTION": " api_mod:矿石 。 NL 造成 !D! 点伤害。 NL 消耗 。"
+    "DESCRIPTION": "造成 !D! 点伤害。",
+    "EXTENDED_DESCRIPTION": [
+      "锋利的"
+    ]
   },
   "ApiMod:Gold": {
     "NAME": "黄金",
-    "DESCRIPTION": " api_mod:矿石 。 NL 获得 !M! 个金币。 NL 消耗 。"
+    "DESCRIPTION": "造成 !D! 点伤害,获得与伤害量相同的金币。",
+    "EXTENDED_DESCRIPTION": [
+      "珍贵的"
+    ]
   },
   "ApiMod:Diamond": {
     "NAME": "钻石",
-    "DESCRIPTION": " api_mod:矿石 。 NL 造成 !D! 点伤害,获得与伤害量相同的金币。 NL 消耗 。"
+    "DESCRIPTION": "获得 !B! 点 格挡 ，获得 !M! 层残影。",
+    "EXTENDED_DESCRIPTION": [
+      "坚固的"
+    ]
   },
   "ApiMod:Quartz": {
     "NAME": "石英",
-    "DESCRIPTION": " api_mod:矿石 。 NL 恢复 !M! 点生命。 NL 消耗 。"
+    "DESCRIPTION": "恢复 !M! 点生命。",
+    "EXTENDED_DESCRIPTION": [
+      "活力的"
+    ]
   },
   "ApiMod:Emerald": {
     "NAME": "绿宝石",
-    "DESCRIPTION": " api_mod:矿石 。 NL 发现一张武器牌。 NL 消耗 。",
-    "UPGRADE_DESCRIPTION": " api_mod:矿石 。 NL 发现一张升级的武器牌。 NL 消耗 。"
+    "DESCRIPTION": "发现一张 api_mod:武器 。",
+    "UPGRADE_DESCRIPTION": "发现一张升级的 api_mod:武器 。",
+    "EXTENDED_DESCRIPTION": [
+      "可交易的"
+    ]
   },
   "ApiMod:Magma": {
     "NAME": "岩浆",
-    "DESCRIPTION": " api_mod:矿石 。 NL 无法被打出。 NL 回合结束时受到 !M! 点伤害。 NL 虚无 。"
+    "DESCRIPTION": "回合结束时受到 !M! 点伤害。",
+    "EXTENDED_DESCRIPTION": [
+      "灼热的"
+    ]
   },
   "ApiMod:RedStone": {
     "NAME": "红石",
-    "DESCRIPTION": " api_mod:矿石 。 NL 获得 !M! 层人工制品。 NL 消耗 。"
+    "DESCRIPTION": "抽 !M! 张牌。",
+    "EXTENDED_DESCRIPTION": [
+      "急迫的"
+    ]
   },
   "ApiMod:Obsidian": {
     "NAME": "黑曜石",
-    "DESCRIPTION": " api_mod:矿石 。 NL 造成 !D! 点伤害，获得 !B! 点格挡。 NL 消耗 。"
+    "DESCRIPTION": "造成 !D! 点伤害，获得 !B! 点 格挡 。",
+    "EXTENDED_DESCRIPTION": [
+      "沉重的"
+    ]
+  },
+  "ApiMod:OreCard": {
+    "NAME": "",
+    "DESCRIPTION": ""
   },
   "ApiMod:Pickaxe": {
     "NAME": "石镐",
-    "DESCRIPTION": " api_mod:武器 NL 装备一把石镐，获得 !M! 层 api_mod:挖掘 。",
+    "DESCRIPTION": " api_mod:武器 NL 装备一把石镐，获得 !M! 层 api_mod:挖掘 ，替换时抽2张牌。",
     "EXTENDED_DESCRIPTION": [
       "铁镐",
       "钻石镐",
-      " api_mod:武器 NL 装备一把铁镐，获得 !M! 层 api_mod:挖掘 。",
-      " api_mod:武器 NL 装备一把钻石镐，获得 !M! 层 api_mod:挖掘 。"
+      " api_mod:武器 NL 装备一把铁镐，获得 !M! 层 api_mod:挖掘 ，替换时抽1张牌，这张牌的费用变成0。",
+      " api_mod:武器 NL 装备一把钻石镐，获得 !M! 层 api_mod:挖掘 ，替换时抽2张牌，获得1块黑曜石"
     ]
   },
+
+
+
   "ApiMod:Smelt": {
     "NAME": "冶炼",
     "DESCRIPTION": "消耗 !M! 张 api_mod:矿石 ，发现1张 api_mod:矿石 。"
+  },
+
+
+  "ApiMod:GoldenTouch": {
+    "NAME": "点石成金",
+    "DESCRIPTION": "消耗最多 !M! 张 api_mod:矿石 ，获得 !M! 张 #y黄金 。",
+    "UPGRADE_DESCRIPTION": "消耗 !M! 张 api_mod:矿石 ，获得 !M! 张升级的 #y黄金 。"
+  },
+  "ApiMod:ComposeOre": {
+    "NAME": "矿石合成",
+    "DESCRIPTION": "消耗 !M! 张 api_mod:矿石 ，合成新的矿石 。"
+  },
+
+
+
+  "ApiMod:HerringBoneStopping": {
+    "NAME": "鱼骨矿道",
+    "DESCRIPTION": "获得 !M! 层 api_mod:挖掘 。"
   }
 }

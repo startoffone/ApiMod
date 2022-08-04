@@ -1,7 +1,23 @@
 {
-  "ApiMod:SmeltAction": {
+  "ApiMod:AbstractOre": {
+    "TEXT": [
+      " api_mod:矿石 。 NL ",
+      " api_mod:矿石 。",
+      " NL 消耗 。",
+      " NL 虚无 。",
+      " 虚无 。"
+    ]
+  },
+  "ApiMod:ComposeOreAction": {
+    "TEXT": [
+      "合成"
+    ]
+  },
+  "ApiMod:ExhaustOre": {
     "TEXT": [
       "消耗"
     ]
   }
+
+
 }

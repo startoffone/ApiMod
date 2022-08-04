@@ -26,7 +26,7 @@ public class Dig extends Power {
     // 回合开始时，添加挖矿动作
     @Override
     public void atStartOfTurn() {
-        this.addToBot(new DigOre(this.owner,this.amount));
+        this.addToBot(new DigOre(this.amount));
     }
 
 }

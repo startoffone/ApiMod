@@ -1,35 +1,30 @@
-package ApiMod.cards.ore;
+package ApiMod.cards.rare;
 
-import ApiMod.cards.abstractCards.AbstractOre;
+import ApiMod.cards.abstractCards.AbstractCard;
 import ApiMod.core.ApiMod;
-import ApiMod.patches.Enums;
+import ApiMod.power.Dig;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class SilverFish extends AbstractOre {
-    public static final String ID = ApiMod.makeID("SilverFish");
+public class HerringBoneStopping extends AbstractCard {
+    public static final String ID = ApiMod.makeID("HerringBoneStopping");
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    public SilverFish() {
-        super(ID, true, CARD_STRINGS, CardType.STATUS, CardTarget.NONE,true);
-        this.tags.add(Enums.Ore_Stone);
-        this.upgraded=true;
+    public HerringBoneStopping() {
+        super(ID, true, CARD_STRINGS, 1, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+        this.setupMagicNumber(1);
     }
 
-    @Override
-    public void upgrade() {
-
-    }
 
     @Override
     public void limitedUpgrade() {
-
+        this.upgradeMagicNumber(1);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-
+        applyToPlayer(new Dig(p,this.magicNumber));
     }
 }

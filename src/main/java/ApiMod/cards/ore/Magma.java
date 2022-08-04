@@ -18,14 +18,11 @@ public class Magma extends AbstractOre {
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public Magma() {
-        super(ID, true, CARD_STRINGS, CardType.STATUS, CardTarget.NONE);
+        super(ID, true, CARD_STRINGS, CardType.STATUS, CardTarget.NONE,false);
         setupMagicNumber(3);
-        this.cost = -2;
-        this.exhaust = false;
-        this.isEthereal = true;
         this.tags.add(Enums.Ore_Iron);
     }
-
+    @Override
     public void triggerOnEndOfTurnForPlayingCard() {
         this.dontTriggerOnUseCard = true;
         AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(this, true));

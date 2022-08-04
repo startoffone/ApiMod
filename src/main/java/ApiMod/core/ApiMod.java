@@ -48,22 +48,16 @@ public class ApiMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
 
 
     public static String makeID(String id) {
-        /* 163 */
         return MOD_ID + ":" + id;
-        /*     */
     }
 
     public static String assetPath(String path) {
-        /* 167 */
         return MOD_ID + "/" + path;
-        /*     */
     }
 
 
     public static void initialize() {
-        /* 177 */
         new ApiMod();
-        /*     */
     }
 
 
@@ -72,6 +66,7 @@ public class ApiMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
     public void receiveEditCards() {
         new AutoAdd("ApiMod")
                 .packageFilter("ApiMod.cards")
+                .notPackageFilter("ApiMod.cards.abstractCards")
                 .setDefaultSeen(true)
                 .cards();
 

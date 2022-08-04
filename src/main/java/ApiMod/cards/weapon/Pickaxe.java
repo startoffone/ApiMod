@@ -24,7 +24,7 @@ public class Pickaxe extends AbstractWeapon {
     private ArrayList<AbstractCard> cardsList = new ArrayList<>();
 
     public Pickaxe() {
-        super(ID, true, CARD_STRINGS, 1, CardRarity.RARE, CardTarget.SELF);
+        super(ID, true, CARD_STRINGS, 1, CardRarity.UNCOMMON, CardTarget.SELF);
         this.setupMagicNumber(1);
         addListByTag(Enums.Ore_Stone);
     }
@@ -51,11 +51,12 @@ public class Pickaxe extends AbstractWeapon {
         this.rawDescription = CARD_STRINGS.EXTENDED_DESCRIPTION[this.timesUpgraded + 2];
         this.initializeDescription();
 
-        //设置为已升级
+        //铁镐等级
         if (this.timesUpgraded == 0) {
             this.upgradeBaseCost(2);
             addListByTag(Enums.Ore_Iron);
         }
+        //钻石镐等级
         if (this.timesUpgraded == 1) {
             this.upgraded = true;
             addListByTag(Enums.Ore_Diamond);
@@ -84,6 +85,8 @@ public class Pickaxe extends AbstractWeapon {
     }
 
     private void addListByTag(CardTags tag) {
+
+        new GetPool();
         for (AbstractCard c : GetPool.GetOrePool()) {
             if (c.hasTag(tag)) {
                 cardsList.add(c);

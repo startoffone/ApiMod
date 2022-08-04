@@ -9,22 +9,25 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import static com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect.SLASH_DIAGONAL;
+
 public class Gold extends AbstractOre {
     public static final String ID = ApiMod.makeID("Gold");
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
     public Gold() {
         super(ID, true, CARD_STRINGS, CardType.SKILL, CardTarget.SELF);
-        this.setupMagicNumber(10);
+        this.setupDamage(6);
         this.tags.add(Enums.Ore_Iron);
     }
 
     @Override
     public void limitedUpgrade() {
-        this.upgradeMagicNumber(5);
+        this.upgradeDamage(5);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new GainGoldAction(this.magicNumber));
+        damageToEnemy(m,SLASH_DIAGONAL);
+        addToBot(new GainGoldAction(this.damage));
     }
 }

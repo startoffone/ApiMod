@@ -37,11 +37,11 @@ public class GetPool {
         ArrayList<AbstractCard> returnCards = new ArrayList<>();
 
         AbstractDungeon.srcCommonCardPool.group.stream().
-                filter(card -> card.hasTag(tag)&& !card.hasTag(AbstractCard.CardTags.HEALING)).forEach(list::add);
+                filter(card -> card.hasTag(tag) && !card.hasTag(AbstractCard.CardTags.HEALING)).forEach(list::add);
         AbstractDungeon.srcUncommonCardPool.group.stream().
-                filter(card -> card.hasTag(tag)&& !card.hasTag(AbstractCard.CardTags.HEALING)).forEach(list::add);
+                filter(card -> card.hasTag(tag) && !card.hasTag(AbstractCard.CardTags.HEALING)).forEach(list::add);
         AbstractDungeon.srcRareCardPool.group.stream().
-                filter(card -> card.hasTag(tag)&& !card.hasTag(AbstractCard.CardTags.HEALING)).forEach(list::add);
+                filter(card -> card.hasTag(tag) && !card.hasTag(AbstractCard.CardTags.HEALING)).forEach(list::add);
 
         for (int i = 0; i < amount; i++) {
             int temp = AbstractDungeon.cardRng.random(list.size() - 1);
@@ -53,7 +53,7 @@ public class GetPool {
 
     //返回当前镐子等级的卡池
     public ArrayList<AbstractCard> pickaxePool() {
-        PickaxePower p = (PickaxePower) AbstractDungeon.player.getPower("ApiMod:PickaxePower");
+        PickaxePower p = (PickaxePower) AbstractDungeon.player.getPower(PickaxePower.PowerID);
         ArrayList<AbstractCard> list = new ArrayList<>();
         if (p != null) {
             return p.cardsList;

@@ -21,7 +21,7 @@ public class Emerald extends AbstractOre {
 
     @Override
     public void limitedUpgrade() {
-        upgradeDescription(CARD_STRINGS);
+        this.upgradeDescription(CARD_STRINGS);
     }
 
     @Override

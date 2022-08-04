@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ArtifactPower;
 
 public class RedStone extends AbstractOre {
     public static final String ID = ApiMod.makeID("RedStone");
@@ -26,6 +25,6 @@ public class RedStone extends AbstractOre {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        applyToPlayer(new ArtifactPower(p,this.magicNumber));
+        drawCards(this.magicNumber);
     }
 }
