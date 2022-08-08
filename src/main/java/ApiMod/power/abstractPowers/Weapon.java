@@ -1,6 +1,4 @@
-package ApiMod.power.abstractPower;
-
-import ApiMod.power.abstractPower.Power;
+package ApiMod.power.abstractPowers;
 
 public abstract class Weapon extends Power {
     public Weapon() {

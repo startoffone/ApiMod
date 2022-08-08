@@ -126,16 +126,25 @@
     "NAME": "冶炼",
     "DESCRIPTION": "消耗 !M! 张 api_mod:矿石 ，发现1张 api_mod:矿石 。"
   },
+  "ApiMod:Throw": {
+    "NAME": "Q键",
+    "DESCRIPTION": "消耗1张牌，抽 !M! 张牌 。"
+  },
 
 
   "ApiMod:GoldenTouch": {
     "NAME": "点石成金",
     "DESCRIPTION": "消耗最多 !M! 张 api_mod:矿石 ，获得 !M! 张 #y黄金 。",
-    "UPGRADE_DESCRIPTION": "消耗 !M! 张 api_mod:矿石 ，获得 !M! 张升级的 #y黄金 。"
+    "UPGRADE_DESCRIPTION": "消耗最多 !M! 张 api_mod:矿石 ，获得 !M! 张升级的 #y黄金 。"
   },
   "ApiMod:ComposeOre": {
     "NAME": "矿石合成",
     "DESCRIPTION": "消耗 !M! 张 api_mod:矿石 ，合成新的矿石 。"
+  },
+  "ApiMod:Tunnelled": {
+    "NAME": "随心所欲乌龟流",
+    "DESCRIPTION": " 消耗 所有手牌，每 消耗 一张，获得1层 多层护甲 ",
+    "UPGRADE_DESCRIPTION": " 消耗 任意张手牌，每 消耗 一张，获得1层 多层护甲 。"
   },
 
 

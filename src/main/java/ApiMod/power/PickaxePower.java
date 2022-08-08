@@ -3,7 +3,7 @@ package ApiMod.power;
 import ApiMod.cards.ore.Obsidian;
 import ApiMod.core.ApiMod;
 import ApiMod.patches.Enums;
-import ApiMod.power.abstractPower.Weapon;
+import ApiMod.power.abstractPowers.Weapon;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;

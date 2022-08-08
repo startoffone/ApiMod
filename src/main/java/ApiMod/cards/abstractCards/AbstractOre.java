@@ -41,6 +41,7 @@ public abstract class AbstractOre extends AbstractCard {
 
     @Override
     protected void upgradeDescription(CardStrings cardStrings) {
+        this.Description=cardStrings.DESCRIPTION;
         this.rawDescription = uiStrings.TEXT[0] + cardStrings.UPGRADE_DESCRIPTION + uiStrings.TEXT[1];
         this.initializeDescription();
     }

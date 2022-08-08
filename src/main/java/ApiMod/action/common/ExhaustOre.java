@@ -18,9 +18,9 @@ public class ExhaustOre extends AbstractGameAction {
     private AbstractPlayer p;
     private List<AbstractCard> noOreList;
     private final boolean anyNumber;
-    public  int numExhausted;
+    public static int numExhausted;
 
-    public static final String ID=ApiMod.makeID("ExhaustOre");
+    public static final String ID = ApiMod.makeID("ExhaustOre");
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
 
     public ExhaustOre(int amount) {
@@ -41,44 +41,33 @@ public class ExhaustOre extends AbstractGameAction {
             noOreList = this.p.hand.group.stream().filter(card -> !card.hasTag(Enums.Ore)).collect(Collectors.toList());
             int oreAmount = this.p.hand.group.size() - noOreList.size();
 
-            if (oreAmount == 0) {
+            if (oreAmount == 0|oreAmount<this.amount) {
                 this.isDone = true;
                 return;
             }
-            if (this.anyNumber) {
-                this.p.hand.group.removeAll(this.noOreList);
-                AbstractDungeon.handCardSelectScreen.open(uiStrings.TEXT[0], this.amount, true);
+
+            if (!this.anyNumber&&this.amount == oreAmount) {
+                numExhausted=oreAmount;
+                noOreList = this.p.hand.group.stream().filter(card -> card.hasTag(Enums.Ore)).collect(Collectors.toList());
+                noOreList.forEach(c -> AbstractDungeon.player.hand.moveToExhaustPile(c));
+                CardCrawlGame.dungeon.checkForPactAchievement();
+                addToBot(new SelectCardToHand(new GetPool().returnRandomOresInCombat(3)));
                 tickDuration();
                 return;
-            } else {
-                if (oreAmount == this.amount) {
-                    noOreList = this.p.hand.group.stream().filter(card -> card.hasTag(Enums.Ore)).collect(Collectors.toList());
-                    noOreList.forEach(c -> AbstractDungeon.player.hand.moveToExhaustPile(c));
-                    CardCrawlGame.dungeon.checkForPactAchievement();
-                    addToBot(new SelectCardToHand(new GetPool().returnRandomCardInCombat(3)));
-
-                    tickDuration();
-                    return;
-                }
-                if (oreAmount > this.amount) {
-                    this.p.hand.group.removeAll(this.noOreList);
-                    AbstractDungeon.handCardSelectScreen.open(uiStrings.TEXT[0], this.amount, false);
-                    tickDuration();
-                    return;
-                }
             }
+
+            this.p.hand.group.removeAll(this.noOreList);
+            AbstractDungeon.handCardSelectScreen.open(uiStrings.TEXT[0], this.amount, this.anyNumber);
         }
 
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
             AbstractDungeon.handCardSelectScreen.selectedCards.group.forEach(this.p.hand::moveToExhaustPile);
             CardCrawlGame.dungeon.checkForPactAchievement();
-            addToBot(new SelectCardToHand(new GetPool().returnRandomCardInCombat(3)));
 
             this.noOreList.forEach(this.p.hand::addToTop);
-            AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             numExhausted=AbstractDungeon.handCardSelectScreen.selectedCards.size();
+            AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
-            this.isDone = true;
         }
         tickDuration();
     }

@@ -64,7 +64,7 @@ public class GetPool {
     }
 
 
-    public ArrayList<AbstractCard> returnRandomCardInCombat(int amount) {
+    public ArrayList<AbstractCard> returnRandomOresInCombat(int amount) {
         ArrayList<AbstractCard> list = pickaxePool();
         ArrayList<AbstractCard> returnCards = new ArrayList<>();
         for (int i = 0; i < amount; i++) {

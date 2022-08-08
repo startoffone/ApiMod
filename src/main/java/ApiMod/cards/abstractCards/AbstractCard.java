@@ -28,7 +28,7 @@ public abstract class AbstractCard extends CustomCard {
     }
 
     // 如果按这个方法实现，在cards文件夹下分别放test_attack.png、test_power.png、test_status.png、test_curse.png、test_skill.png
-    private static String GetTmpImgPath(CardType t) {
+    protected static String GetTmpImgPath(CardType t) {
         String type;
         switch (t) {
             case ATTACK:
@@ -53,7 +53,7 @@ public abstract class AbstractCard extends CustomCard {
     }
 
     //如果实现这个方法，只要将相应类型的卡牌丢进相应文件夹即可，如攻击牌卡图添加进img/cards/attack/下
-    private static String GetImgPath(CardType t, String name) {
+    protected static String GetImgPath(CardType t, String name) {
         String type;
         switch (t) {
             case ATTACK:
@@ -74,7 +74,7 @@ public abstract class AbstractCard extends CustomCard {
             default:
                 throw new IllegalStateException("Unexpected value: " + t);
         }
-        return String.format(ApiMod.assetPath("img/cards/%s/%s.png"), type, name.replace(ApiMod.assetPath(""), ""));
+        return String.format(ApiMod.assetPath("img/cards/%s/%s.png"), type, name.replace(ApiMod.makeID(""), ""));
     }
 
     //以下三个方法可以快速设置伤害格挡特殊值的基础数值
