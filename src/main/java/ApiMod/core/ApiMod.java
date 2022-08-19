@@ -1,8 +1,11 @@
 package ApiMod.core;
 
 import ApiMod.characters.Api;
+import ApiMod.patches.Enums;
+import ApiMod.relics.abstractRelics.AbstractRelics;
 import basemod.AutoAdd;
 import basemod.BaseMod;
+import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -12,6 +15,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import java.nio.charset.StandardCharsets;
 
@@ -19,7 +23,7 @@ import static ApiMod.patches.Enums.APi_CLASS;
 import static ApiMod.patches.Enums.APi_CARD;
 
 @SpireInitializer
-public class ApiMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditKeywordsSubscriber {
+public class ApiMod implements EditCardsSubscriber, EditStringsSubscriber, EditCharactersSubscriber, EditKeywordsSubscriber, EditRelicsSubscriber {
     public static String MOD_ID = "ApiMod";
     public static final Color API_COLOR = CardHelper.getColor(255, 189, 190);
 
@@ -72,6 +76,29 @@ public class ApiMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
 
     }
 
+    //遗物注册
+    @Override
+    public void receiveEditRelics() {
+        new AutoAdd("ApiMod")
+                .packageFilter("ApiMod.relics.shared")
+                .any(AbstractRelics.class,(info, relic)->{
+                    BaseMod.addRelic(relic, RelicType.SHARED);
+                    if (info.seen) {
+                        UnlockTracker.markRelicAsSeen(relic.relicId);
+                    }
+                });
+        new AutoAdd("ApiMod")
+                .packageFilter("ApiMod.relics")
+                .notPackageFilter("ApiMod.relics.shared")
+                .any(AbstractRelics.class,(info, relic)->{
+                    BaseMod.addRelicToCustomPool(relic, APi_CARD);
+                    if (info.seen) {
+                        UnlockTracker.markRelicAsSeen(relic.relicId);
+                    }
+                });
+    }
+
+
     //读取本地语言
     private Settings.GameLanguage languageRead() {
         if (Settings.language == Settings.GameLanguage.ZHS) {
@@ -88,6 +115,7 @@ public class ApiMod implements EditCardsSubscriber, EditStringsSubscriber, EditC
         BaseMod.loadCustomStringsFile(CharacterStrings.class, assetPath("localization/" + lang + "/characters.json"));
         BaseMod.loadCustomStringsFile(PowerStrings.class, assetPath("localization/" + lang + "/powers.json"));
         BaseMod.loadCustomStringsFile(UIStrings.class, assetPath("localization/" + lang + "/ui.json"));
+        BaseMod.loadCustomStringsFile(RelicStrings.class, assetPath("localization/" + lang + "/relics.json"));
     }
 
     //人物注册

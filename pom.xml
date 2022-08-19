@@ -21,7 +21,7 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>com.megacrit.cardcrawl</groupId>
+            <groupId>slaythespire</groupId>
             <artifactId>slaythespire</artifactId>
             <version>2020-11-30</version>
             <scope>system</scope>
@@ -35,11 +35,18 @@
             <systemPath>${Steam.path}/workshop/content/646570/1605833019/BaseMod.jar</systemPath>
         </dependency>
         <dependency>
-            <groupId>com.evacipated.cardcrawl</groupId>
+            <groupId>ModTheSpire</groupId>
             <artifactId>ModTheSpire</artifactId>
             <version>3.23.2</version>
             <scope>system</scope>
             <systemPath>${Steam.path}/workshop/content/646570/1605060445/ModTheSpire.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>StSLib</groupId>
+            <artifactId>StSLib</artifactId>
+            <version>2.4.1</version>
+            <scope>system</scope>
+            <systemPath>${Steam.path}/workshop/content/646570/1609158507/StSLib.jar</systemPath>
         </dependency>
     </dependencies>
     <build>

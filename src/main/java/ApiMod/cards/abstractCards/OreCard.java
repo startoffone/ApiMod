@@ -2,6 +2,7 @@ package ApiMod.cards.abstractCards;
 
 import ApiMod.cards.ore.Gold;
 import ApiMod.cards.ore.SilverFish;
+import ApiMod.cards.ore.Stone;
 import ApiMod.core.ApiMod;
 import ApiMod.patches.Enums;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -14,7 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OreCard extends AbstractCard {
+public class OreCard extends AbstractCards {
     public static final String ID = ApiMod.makeID("OreCard");
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("ApiMod:AbstractOre");
@@ -65,7 +66,7 @@ public class OreCard extends AbstractCard {
 
             //添加描述
             descStr.add(" NL " + ore.returnDescription());
-            if (ore.cardID.equals(Gold.ID)) {
+            if (ore.cardID.equals(Gold.ID)|ore.cardID.equals(Stone.ID)) {
                 this.exhaust = true;
             }
             if (ore.cardID.equals(SilverFish.ID)) {

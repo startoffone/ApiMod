@@ -10,26 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import java.util.ArrayList;
 
 public class GetPool {
-
-    public static ArrayList<AbstractOre> GetOrePool() {
-        ArrayList<AbstractOre> orePool = new ArrayList<>();
-
-        orePool.add(new Coal());
-        orePool.add(new Diamond());
-        orePool.add(new Emerald());
-        orePool.add(new Fluorite());
-        orePool.add(new Gold());
-        orePool.add(new Iron());
-        orePool.add(new Magma());
-        orePool.add(new Obsidian());
-        orePool.add(new Quartz());
-        orePool.add(new RedStone());
-        orePool.add(new Sand());
-        orePool.add(new SilverFish());
-        orePool.add(new Stone());
-
-        return orePool;
-    }
+  public static ArrayList<AbstractOre> orePool = new ArrayList<>();
 
     //战斗中根据tag返回发现卡牌组
     public ArrayList<AbstractCard> returnTrulyRandomCardInCombat(AbstractCard.CardTags tag, int amount) {
@@ -58,7 +39,7 @@ public class GetPool {
         if (p != null) {
             return p.cardsList;
         } else {
-            GetPool.GetOrePool().stream().filter(c -> c.hasTag(Enums.Ore_Stone)).forEach(list::add);
+            orePool.stream().filter(c -> c.hasTag(Enums.Ore_Stone)).forEach(list::add);
             return list;
         }
     }
@@ -73,5 +54,21 @@ public class GetPool {
             list.remove(temp);
         }
         return returnCards;
+    }
+
+    static {
+        orePool.add(new Coal());
+        orePool.add(new Diamond());
+        orePool.add(new Emerald());
+        orePool.add(new Fluorite());
+        orePool.add(new Gold());
+        orePool.add(new Iron());
+        orePool.add(new Magma());
+        orePool.add(new Obsidian());
+        orePool.add(new Quartz());
+        orePool.add(new RedStone());
+        orePool.add(new Sand());
+        orePool.add(new SilverFish());
+        orePool.add(new Stone());
     }
 }

@@ -1,0 +1,20 @@
+{
+  "ApiMod:BandageWithBlood": {
+    "NAME": "沾有番茄酱的纱布",
+    "FLAVOR": "沾有番茄酱的纱布",
+    "DESCRIPTIONS": [
+      "满生命值时获得 #b2 点 力量 ，战斗结束后恢复 #b2 点生命"
+    ]
+  },
+
+
+
+
+  "ApiMod:Boundaries": {
+    "NAME": "不稳定的隙间",
+    "FLAVOR": "不知道哪里发现的奇怪入口",
+    "DESCRIPTIONS": [
+      "右键点击使用，每场战斗仅限一次，失去 #b3 点最大生命值，获得一层  #y无实体 "
+    ]
+  }
+}

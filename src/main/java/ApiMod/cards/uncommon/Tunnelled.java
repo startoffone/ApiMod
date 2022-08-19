@@ -1,7 +1,8 @@
 package ApiMod.cards.uncommon;
 
-import ApiMod.cards.abstractCards.AbstractCard;
+import ApiMod.cards.abstractCards.AbstractCards;
 import ApiMod.core.ApiMod;
+import ApiMod.helpers.CardHelper;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -9,7 +10,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 
-public class Tunnelled extends AbstractCard {
+public class Tunnelled extends AbstractCards {
     public static final String ID = ApiMod.makeID("Tunnelled");
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
 
@@ -21,8 +22,8 @@ public class Tunnelled extends AbstractCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ExhaustAction(false, upgraded, true));
-        applyToPlayer(new PlatedArmorPower(p, ExhaustAction.numExhausted));
+        addToBot( new ExhaustAction(false, upgraded, true));
+        CardHelper.addToBottom(()-> applyToPlayer(new PlatedArmorPower(p, ExhaustAction.numExhausted)));
     }
 
     @Override

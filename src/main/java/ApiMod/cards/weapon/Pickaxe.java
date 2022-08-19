@@ -1,11 +1,9 @@
 package ApiMod.cards.weapon;
 
 import ApiMod.cards.abstractCards.AbstractWeapon;
-import ApiMod.cards.ore.Coal;
 import ApiMod.core.ApiMod;
 import ApiMod.helpers.GetPool;
 import ApiMod.patches.Enums;
-import ApiMod.power.Dig;
 import ApiMod.power.PickaxePower;
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -24,7 +22,7 @@ public class Pickaxe extends AbstractWeapon {
     private ArrayList<AbstractCard> cardsList = new ArrayList<>();
 
     public Pickaxe() {
-        super(ID, true, CARD_STRINGS, 1, CardRarity.UNCOMMON, CardTarget.SELF);
+        super(ID, true, CARD_STRINGS, 1, CardRarity.COMMON);
         this.setupMagicNumber(1);
         addListByTag(Enums.Ore_Stone);
     }
@@ -32,48 +30,39 @@ public class Pickaxe extends AbstractWeapon {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         applyToPlayer(new PickaxePower(p, this.timesUpgraded, cardsList)); //给予镐子
-        applyToPlayer(new Dig(p, this.timesUpgraded + 1));
     }
 
     @Override
     public void upgrade() {
-        if (!this.upgraded) {
-            limitedUpgrade();
-        }
-    }
-
-    @Override
-    public void limitedUpgrade() {
         this.upgradeMagicNumber(1);
         //获取与更新牌名，描述
         this.name = CARD_STRINGS.EXTENDED_DESCRIPTION[this.timesUpgraded];
         initializeTitle();
         this.rawDescription = CARD_STRINGS.EXTENDED_DESCRIPTION[this.timesUpgraded + 2];
         this.initializeDescription();
-
+        this.upgradeBaseCost(this.cost + 1);
         //铁镐等级
         if (this.timesUpgraded == 0) {
-            this.upgradeBaseCost(2);
             addListByTag(Enums.Ore_Iron);
         }
         //钻石镐等级
         if (this.timesUpgraded == 1) {
-            this.upgraded = true;
+            this.upgraded=true;
+            this.name = this.name + "+";
+            this.initializeTitle();
             addListByTag(Enums.Ore_Diamond);
         }
         ++this.timesUpgraded;
     }
+
 
     public void update() {
         super.update();
         if (this.hb.hovered)
             if (this.rotationTimer <= 0.0F) {
                 this.rotationTimer = 2.0F;
-                if (this.cardsList.size() == 0) {
-                    this.cardsToPreview = new Coal();
-                } else {
-                    this.cardsToPreview = this.cardsList.get(this.previewIndex);
-                }
+                this.cardsToPreview = this.cardsList.get(this.previewIndex);
+
                 if (this.previewIndex == this.cardsList.size() - 1) {
                     this.previewIndex = 0;
                 } else {
@@ -85,9 +74,7 @@ public class Pickaxe extends AbstractWeapon {
     }
 
     private void addListByTag(CardTags tag) {
-
-        new GetPool();
-        for (AbstractCard c : GetPool.GetOrePool()) {
+        for (AbstractCard c : GetPool.orePool) {
             if (c.hasTag(tag)) {
                 cardsList.add(c);
             }

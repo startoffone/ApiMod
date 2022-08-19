@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import static ApiMod.patches.Enums.Ore;
 import static com.megacrit.cardcrawl.cards.AbstractCard.CardRarity.SPECIAL;
 
-public abstract class AbstractOre extends AbstractCard {
+public abstract class AbstractOre extends AbstractCards {
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ApiMod.makeID("AbstractOre"));
     protected String Description;
     protected final String[] ExtendDescription;

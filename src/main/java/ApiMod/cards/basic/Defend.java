@@ -1,13 +1,13 @@
 package ApiMod.cards.basic;
 
-import ApiMod.cards.abstractCards.AbstractCard;
+import ApiMod.cards.abstractCards.AbstractCards;
 import ApiMod.core.ApiMod;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class Defend extends AbstractCard {
+public class Defend extends AbstractCards {
     //获取类名作为id,前方添加mod前缀
     public static final String ID = ApiMod.makeID("Defend");
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);//id获取本地化内容

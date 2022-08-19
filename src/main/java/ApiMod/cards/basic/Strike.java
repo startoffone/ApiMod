@@ -1,6 +1,6 @@
 package ApiMod.cards.basic;
 
-import ApiMod.cards.abstractCards.AbstractCard;
+import ApiMod.cards.abstractCards.AbstractCards;
 import ApiMod.core.ApiMod;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import static com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect.SLASH_DIAGONAL;
 
 
-public class Strike extends AbstractCard {
+public class Strike extends AbstractCards {
     //获取类名作为id,前方添加mod前缀
     public static final String ID = ApiMod.makeID("Strike");
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);//id获取本地化内容

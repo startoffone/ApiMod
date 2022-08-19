@@ -4,6 +4,7 @@ import ApiMod.cards.basic.Defend;
 import ApiMod.cards.basic.Strike;
 import ApiMod.core.ApiMod;
 import ApiMod.patches.Enums;
+import ApiMod.relics.BandageWithBlood;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -19,7 +20,6 @@ import com.megacrit.cardcrawl.events.city.Vampires;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
-import com.megacrit.cardcrawl.relics.Vajra;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 
 import java.util.ArrayList;
@@ -101,7 +101,7 @@ public class Api extends CustomPlayer {
     @Override
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
-        retVal.add(Vajra.ID);
+        retVal.add(BandageWithBlood.ID);
         return retVal;
     }
 
@@ -134,7 +134,6 @@ public class Api extends CustomPlayer {
     public AbstractCard.CardColor getCardColor() {
         return APi_CARD;
     }
-
     // 卡牌选择界面选择该牌的颜色
     @Override
     public Color getCardRenderColor() {

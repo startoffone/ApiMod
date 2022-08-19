@@ -1,6 +1,6 @@
 package ApiMod.cards.rare;
 
-import ApiMod.cards.abstractCards.AbstractCard;
+import ApiMod.cards.abstractCards.AbstractCards;
 import ApiMod.core.ApiMod;
 import ApiMod.power.Dig;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class HerringBoneStopping extends AbstractCard {
+public class HerringBoneStopping extends AbstractCards {
     public static final String ID = ApiMod.makeID("HerringBoneStopping");
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
 
@@ -25,6 +25,6 @@ public class HerringBoneStopping extends AbstractCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        applyToPlayer(new Dig(p,this.magicNumber));
+        applyToPlayer(new Dig(this.magicNumber));
     }
 }

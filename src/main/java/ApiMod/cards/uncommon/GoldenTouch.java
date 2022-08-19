@@ -1,7 +1,7 @@
 package ApiMod.cards.uncommon;
 
 import ApiMod.action.common.ExhaustOre;
-import ApiMod.cards.abstractCards.AbstractCard;
+import ApiMod.cards.abstractCards.AbstractCards;
 import ApiMod.cards.abstractCards.AbstractOre;
 import ApiMod.cards.ore.Gold;
 import ApiMod.core.ApiMod;
@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class GoldenTouch extends AbstractCard {
+public class GoldenTouch extends AbstractCards {
     public static final String ID = ApiMod.makeID("GoldenTouch");
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
 
@@ -28,15 +28,13 @@ public class GoldenTouch extends AbstractCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        addToBot(new ExhaustOre(this.magicNumber, true));
+        AbstractOre Gold = new Gold();
         CardHelper.addToBottom(() -> {
-            addToBot(new ExhaustOre(this.magicNumber, true));
             if (this.upgraded) {
-                AbstractOre Gold = new Gold();
                 Gold.upgrade();
-                addToBot(new MakeTempCardInHandAction(Gold, ExhaustOre.numExhausted));
-            } else {
-                addToBot(new MakeTempCardInHandAction(new Gold(), ExhaustOre.numExhausted));
             }
+            addToBot(new MakeTempCardInHandAction(Gold, ExhaustOre.numExhausted));
         });
 
     }

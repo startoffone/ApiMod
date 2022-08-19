@@ -1,29 +1,28 @@
-package ApiMod.cards.uncommon;
+package ApiMod.cards.weapon;
 
-import ApiMod.action.ComposeOreAction;
-import ApiMod.cards.abstractCards.AbstractCards;
+import ApiMod.cards.abstractCards.AbstractWeapon;
 import ApiMod.core.ApiMod;
+import ApiMod.power.Repeater30_30Power;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ComposeOre extends AbstractCards {
-    public static final String ID = ApiMod.makeID("ComposeOre");
+public class Repeater30_30 extends AbstractWeapon {
+    public static final String ID = ApiMod.makeID("Repeater30_30");
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    public ComposeOre() {
-        super(ID, true, CARD_STRINGS, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
-        setupMagicNumber(2);
+    public Repeater30_30() {
+        super(ID, true, CARD_STRINGS, 2, CardRarity.UNCOMMON);
     }
 
     @Override
     public void limitedUpgrade() {
-        this.upgradeBaseCost(1);
+       upgradeBaseCost(1);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ComposeOreAction(this.magicNumber));
+        applyToPlayer(new Repeater30_30Power(p));
     }
 }

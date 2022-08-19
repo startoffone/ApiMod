@@ -1,6 +1,6 @@
 package ApiMod.cards.common;
 
-import ApiMod.cards.abstractCards.AbstractCard;
+import ApiMod.cards.abstractCards.AbstractCards;
 import ApiMod.core.ApiMod;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class Throw extends AbstractCard {
+public class Throw extends AbstractCards {
     public static final String ID = ApiMod.makeID("Throw");
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
     public Throw() {

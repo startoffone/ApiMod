@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ExhaustOre extends AbstractGameAction {
-    private AbstractPlayer p;
+    private final AbstractPlayer p;
     private List<AbstractCard> noOreList;
     private final boolean anyNumber;
     public static int numExhausted;
@@ -48,10 +48,11 @@ public class ExhaustOre extends AbstractGameAction {
 
             if (!this.anyNumber&&this.amount == oreAmount) {
                 numExhausted=oreAmount;
-                noOreList = this.p.hand.group.stream().filter(card -> card.hasTag(Enums.Ore)).collect(Collectors.toList());
-                noOreList.forEach(c -> AbstractDungeon.player.hand.moveToExhaustPile(c));
+                this.p.hand.group.stream().filter(card -> card.hasTag(Enums.Ore))
+                        .forEach(c -> AbstractDungeon.player.hand.moveToExhaustPile(c));
                 CardCrawlGame.dungeon.checkForPactAchievement();
                 addToBot(new SelectCardToHand(new GetPool().returnRandomOresInCombat(3)));
+
                 tickDuration();
                 return;
             }
