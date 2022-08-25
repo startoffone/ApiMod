@@ -23,6 +23,6 @@ public class Repeater30_30 extends AbstractWeapon {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        applyToPlayer(new Repeater30_30Power(p));
+        applyToPlayer(new Repeater30_30Power(p,this.cost));
     }
 }

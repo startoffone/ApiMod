@@ -17,8 +17,7 @@ import static com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect.BLU
 public class OreStrike extends AbstractCards {
     public static final String ID = ApiMod.makeID("OreStrike");
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
-    private int cardAmount = 0;
-    private ArrayList<AbstractCard> cardList;
+    private int cardAmount = 0, oreAmount = 0;//cardAmount记录本场战斗出牌数，oreAmount记录打出的矿石牌数
 
     public OreStrike() {
         super(ID, true, CARD_STRINGS, 1, CardType.ATTACK, CardRarity.COMMON, CardTarget.ENEMY);
@@ -32,38 +31,21 @@ public class OreStrike extends AbstractCards {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractCard card;
-        this.cardList = AbstractDungeon.actionManager.cardsPlayedThisCombat;
-        int oreAmount = 0;
-        for (int i = cardAmount; i < cardList.size(); ++i) {
-            card = cardList.get(i);
-            if (card.hasTag(Enums.Ore)) {
-                ++oreAmount;
-            }
-            ++cardAmount;
-        }
-
+        getOreAmount(true);
         this.baseDamage = oreAmount * this.magicNumber;
+        this.oreAmount=0;//重置记录数
         calculateCardDamage(m);
         damageToEnemy(m, BLUNT_HEAVY);
     }
 
     @Override
     public void applyPowers() {
-        AbstractCard card;
-        int oreAmount = 0;
-        for (int i = cardAmount; i < cardList.size(); ++i) {
-            card = cardList.get(i);
-            if (card.hasTag(Enums.Ore)) {
-                ++oreAmount;
-            }
-        }
-        if (oreAmount > 0) {
-            this.baseDamage = oreAmount * this.magicNumber;
-            super.applyPowers();
-            this.rawDescription = CARD_STRINGS.DESCRIPTION + CARD_STRINGS.EXTENDED_DESCRIPTION[0];
-            initializeDescription();
-        }
+        getOreAmount(false);
+        this.baseDamage = oreAmount * this.magicNumber;
+        super.applyPowers();
+        this.rawDescription = CARD_STRINGS.DESCRIPTION + CARD_STRINGS.EXTENDED_DESCRIPTION[0];
+        initializeDescription();
+
     }
 
     @Override
@@ -77,5 +59,20 @@ public class OreStrike extends AbstractCards {
     public void onMoveToDiscard() {
         this.rawDescription = CARD_STRINGS.DESCRIPTION;
         initializeDescription();
+    }
+
+    private void getOreAmount(boolean ues) {
+        AbstractCard card;int i;
+        ArrayList<AbstractCard> cardList = AbstractDungeon.actionManager.cardsPlayedThisCombat;
+
+        for (i = cardAmount; i < cardList.size(); ++i) {
+            card = cardList.get(i);
+            if (card.hasTag(Enums.Ore)) {
+                ++this.oreAmount;
+            }
+        }
+        if (ues) {
+            this.cardAmount += i;
+        }
     }
 }

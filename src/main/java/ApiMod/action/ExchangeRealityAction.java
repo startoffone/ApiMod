@@ -1,6 +1,5 @@
 package ApiMod.action;
 
-import com.evacipated.cardcrawl.mod.stslib.actions.common.MoveCardsAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -43,17 +42,8 @@ public class ExchangeRealityAction extends AbstractGameAction {
     private void moveToExhaust() {
         ArrayList<AbstractCard> cards = new ArrayList<>(p.drawPile.group);
         for (AbstractCard card : cards) {
-            card.untip();
-            card.unhover();
-            card.lighten(true);
-            card.setAngle(0.0F);
-            card.drawScale = 0.12F;
-            card.targetDrawScale = 0.75F;
-            card.current_x = CardGroup.DRAW_PILE_X;
-            card.current_y = CardGroup.DRAW_PILE_Y;
-            p.exhaustPile.addToTop(card);
+            p.drawPile.moveToExhaustPile(card);
         }
-        p.drawPile.clear();
     }
     private void moveToDraw(){
         ArrayList<AbstractCard> cards = new ArrayList<>(p.exhaustPile.group);

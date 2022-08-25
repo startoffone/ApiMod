@@ -1,4 +1,4 @@
-package ApiMod.cards.ore;
+package ApiMod.cards.special.ore;
 
 import ApiMod.action.common.SelectCardToHand;
 import ApiMod.cards.abstractCards.AbstractOre;
@@ -26,6 +26,6 @@ public class Emerald extends AbstractOre {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new SelectCardToHand(new GetPool().returnTrulyRandomCardInCombat(Enums.Weapon,3),this.upgraded));
+        addToBot(new SelectCardToHand(new GetPool().returnTrulyRandomCardInCombat(Enums.Weapon,3),true,this.upgraded));
     }
 }

@@ -1,66 +1,60 @@
 package ApiMod.action.common;
 
-import basemod.BaseMod;
+import ApiMod.core.ApiMod;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.screens.CardRewardScreen;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.UIStrings;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
 public class SelectCardToHand extends AbstractGameAction {
-    private ArrayList<AbstractCard> cards;
-    private boolean retrieveCard = false;
-    private boolean isUpgrade;
+    public static final String ID = ApiMod.makeID("SelectCardToHand");
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(ID);
+    private final ArrayList<AbstractCard> cards;
+    private  boolean isUpgrade, useGrid,anyNumber;
+    private  Consumer<AbstractCard> func;
 
-    public SelectCardToHand(ArrayList<AbstractCard> cards) {
-        this.cards = cards;
-        this.isUpgrade = false;
-        this.duration = Settings.ACTION_DUR_FAST;
+
+    public SelectCardToHand(ArrayList<AbstractCard> cards,boolean anyNumber) {
+        this(cards,anyNumber,false);
     }
 
-    public SelectCardToHand(ArrayList<AbstractCard> cards, boolean isUpgrade) {
+    public SelectCardToHand(ArrayList<AbstractCard> cards,boolean anyNumber, boolean isUpgrade) {
         this.cards = cards;
-        this.isUpgrade = isUpgrade;
-        this.duration = Settings.ACTION_DUR_FAST;
+        this.isUpgrade=isUpgrade;
+        this.anyNumber=anyNumber;
+    }
+
+    public SelectCardToHand(ArrayList<AbstractCard> cards, int amount, Consumer<AbstractCard> func) {
+        this.cards = cards;
+        this.amount = amount;
+        this.useGrid = true;
+        this.func=func;
     }
 
     @Override
     public void update() {
-        if (AbstractDungeon.getCurrRoom().isBattleEnding()) {
-            this.isDone = true;
-            return;
-        }
-
-        if (this.duration == Settings.ACTION_DUR_FAST) {
-            AbstractDungeon.cardRewardScreen.customCombatOpen(this.cards, CardRewardScreen.TEXT[1], false);
-
-            tickDuration();
-            return;
-        }
-
-        if (!this.retrieveCard) {
-            if (AbstractDungeon.cardRewardScreen.discoveryCard != null) {
-                AbstractCard disCard = AbstractDungeon.cardRewardScreen.discoveryCard.makeStatEquivalentCopy();
+        if (this.useGrid) {
+            Consumer<List<AbstractCard>> callBack = c -> {
+                AbstractCard card = c.get(0);
+                this.cards.remove(card);
+                func.accept(card);
                 if (this.isUpgrade) {
-                    if (!disCard.upgraded&&disCard.canUpgrade()) {
-                        disCard.upgrade();
-                    }
+                    card.upgrade();
                 }
-                disCard.current_x = -1000.0F * Settings.scale;
-                if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
-                    AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(disCard, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
-                } else {
-                    AbstractDungeon.effectList.add(new ShowCardAndAddToDiscardEffect(disCard, Settings.WIDTH / 2.0F, Settings.HEIGHT / 2.0F));
-                }
-                AbstractDungeon.cardRewardScreen.discoveryCard = null;
-            }
-            this.retrieveCard = true;
+                addToBot(new MakeTempCardInHandAction(card));
+            };
+            addToBot(new SelectCardsAction(cards, this.amount, uiStrings.TEXT[0], callBack));
+        } else {
+            Consumer<AbstractCard> callBack=c -> addToBot(new MakeTempCardInHandAction(c));
+            addToBot(new DiscoverCardsAction(cards, uiStrings.TEXT[0], this.anyNumber,callBack));
         }
-        tickDuration();
+        this.isDone = true;
     }
 
 }

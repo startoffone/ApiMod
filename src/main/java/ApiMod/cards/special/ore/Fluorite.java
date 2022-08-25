@@ -1,4 +1,4 @@
-package ApiMod.cards.ore;
+package ApiMod.cards.special.ore;
 
 import ApiMod.cards.abstractCards.AbstractOre;
 import ApiMod.core.ApiMod;
@@ -7,12 +7,12 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 
-public class Sand extends AbstractOre {
-    public static final String ID = ApiMod.makeID("Sand");
+public class Fluorite extends AbstractOre {
+    public static final String ID = ApiMod.makeID("Fluorite");
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
-    public Sand() {
+    public Fluorite() {
         super(ID, true, CARD_STRINGS, CardType.SKILL, CardTarget.ENEMY);
         this.setupMagicNumber(2);
         this.tags.add(Enums.Ore_Stone);
@@ -20,7 +20,7 @@ public class Sand extends AbstractOre {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        applyToMonster(m,new VulnerablePower(m,this.magicNumber,false));//给予易伤
+        applyToMonster(m,new WeakPower(m,this.magicNumber,false));//给予虚弱
     }
     @Override
     public void limitedUpgrade() {

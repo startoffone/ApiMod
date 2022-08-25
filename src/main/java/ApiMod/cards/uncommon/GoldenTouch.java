@@ -3,9 +3,8 @@ package ApiMod.cards.uncommon;
 import ApiMod.action.common.ExhaustOre;
 import ApiMod.cards.abstractCards.AbstractCards;
 import ApiMod.cards.abstractCards.AbstractOre;
-import ApiMod.cards.ore.Gold;
+import ApiMod.cards.special.ore.Gold;
 import ApiMod.core.ApiMod;
-import ApiMod.helpers.CardHelper;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -28,14 +27,12 @@ public class GoldenTouch extends AbstractCards {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ExhaustOre(this.magicNumber, true));
-        AbstractOre Gold = new Gold();
-        CardHelper.addToBottom(() -> {
+        addToBot(new ExhaustOre(this.magicNumber, true,()->{
+            AbstractOre Gold = new Gold();
             if (this.upgraded) {
                 Gold.upgrade();
             }
-            addToBot(new MakeTempCardInHandAction(Gold, ExhaustOre.numExhausted));
-        });
-
+            addToBot(new MakeTempCardInHandAction(new Gold(), ExhaustOre.numExhausted));
+        }));
     }
 }

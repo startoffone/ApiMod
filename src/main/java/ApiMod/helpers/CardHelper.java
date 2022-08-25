@@ -8,7 +8,6 @@ public interface CardHelper {
     interface Lambda extends Runnable {
     }
 
-    //匿名函数添加action
     static void addToBottom(Lambda func) {
         AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
             @Override

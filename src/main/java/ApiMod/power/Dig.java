@@ -3,6 +3,7 @@ package ApiMod.power;
 import ApiMod.action.common.DigOre;
 import ApiMod.core.ApiMod;
 import ApiMod.power.abstractPowers.AbstractPowers;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 
@@ -10,11 +11,12 @@ public class Dig extends AbstractPowers {
     public static final String PowerID = ApiMod.makeID("Dig");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(PowerID);
 
-    public Dig( int Amount) {
-        this.amount=Amount;
+    public Dig(AbstractCreature Owner,int Amount) {
         this.ID=PowerID;
         this.name=powerStrings.NAME;
-
+        this.type = PowerType.BUFF;
+        this.owner=Owner;
+        this.amount=Amount;
         this.useTmpArt();
         this.updateDescription();
     }

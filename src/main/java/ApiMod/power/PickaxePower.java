@@ -1,7 +1,7 @@
 package ApiMod.power;
 
 import ApiMod.action.common.DigOre;
-import ApiMod.cards.ore.Obsidian;
+import ApiMod.cards.special.ore.Obsidian;
 import ApiMod.core.ApiMod;
 import ApiMod.power.abstractPowers.Weapon;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -23,7 +23,8 @@ public class PickaxePower extends Weapon {
     private final int PickaxeLevel;
 
 
-    public PickaxePower(AbstractCreature Owner, int PickaxeLevel, ArrayList<AbstractCard> cardsList) {
+    public PickaxePower(AbstractCreature Owner, int PickaxeLevel,int Cost ,ArrayList<AbstractCard> cardsList) {
+        super(Cost);
         this.ID = PowerID;
         this.name = DESCRIPTIONS[PickaxeLevel];
         this.owner = Owner;

@@ -19,7 +19,7 @@ public class PeaceKeeper extends AbstractWeapon {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        applyToPlayer(new PeaceKeeperPower(p,this.damage,this.magicNumber));
+        applyToPlayer(new PeaceKeeperPower(p,this.baseDamage,this.magicNumber,this.cost));
     }
 
     @Override

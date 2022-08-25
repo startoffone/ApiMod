@@ -6,7 +6,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public abstract class Weapon extends AbstractPowers {
-    public Weapon() {
+    public final int cost;
+    public Weapon(int Cost) {
+        this.cost=Cost;
         this.amount = -1;
         this.type = PowerType.BUFF;
         this.updateDescription();

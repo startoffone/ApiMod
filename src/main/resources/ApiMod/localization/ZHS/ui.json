@@ -17,5 +17,10 @@
     "TEXT": [
       "消耗"
     ]
+  },
+  "ApiMod:SelectCardToHand": {
+    "TEXT": [
+      "选择一张牌"
+    ]
   }
 }

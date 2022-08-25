@@ -1,4 +1,4 @@
-package ApiMod.cards.ore;
+package ApiMod.cards.special.ore;
 
 import ApiMod.cards.abstractCards.AbstractOre;
 import ApiMod.core.ApiMod;

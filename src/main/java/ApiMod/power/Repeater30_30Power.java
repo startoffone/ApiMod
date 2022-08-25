@@ -18,7 +18,8 @@ public class Repeater30_30Power extends Weapon {
     private boolean doubleDamage;
     private final AbstractPlayer player;
 
-    public Repeater30_30Power(AbstractPlayer p) {
+    public Repeater30_30Power(AbstractPlayer p,int cost) {
+        super(cost);
         this.ID = PowerID;
         this.name = powerStrings.NAME;
         this.owner = player=p;

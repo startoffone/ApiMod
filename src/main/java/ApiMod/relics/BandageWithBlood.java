@@ -3,7 +3,7 @@ package ApiMod.relics;
 import ApiMod.core.ApiMod;
 import ApiMod.relics.abstractRelics.AbstractRelics;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -13,7 +13,7 @@ public class BandageWithBlood extends AbstractRelics {
     public static final String ID = ApiMod.makeID("BandageWithBlood");
     private boolean maxHealth;
     private final int strength = 2;
-    private AbstractCreature p;
+    private AbstractPlayer p;
 
     public BandageWithBlood() {
         super(ID, true, RelicTier.STARTER, AbstractRelic.LandingSound.CLINK);
@@ -21,7 +21,7 @@ public class BandageWithBlood extends AbstractRelics {
 
     @Override
     public void atBattleStart() {
-        p = AbstractDungeon.player;
+        this.p=AbstractDungeon.player;
         if (p.currentHealth == p.maxHealth) {
             applyToPlayer(new StrengthPower(p, this.strength));
             this.maxHealth = true;

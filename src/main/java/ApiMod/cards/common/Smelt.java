@@ -1,8 +1,10 @@
 package ApiMod.cards.common;
 
 import ApiMod.action.common.ExhaustOre;
+import ApiMod.action.common.SelectCardToHand;
 import ApiMod.cards.abstractCards.AbstractCards;
 import ApiMod.core.ApiMod;
+import ApiMod.helpers.GetPool;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -19,13 +21,12 @@ public class Smelt extends AbstractCards {
 
     @Override
     public void limitedUpgrade() {
-        this.upgradeBaseCost(1);
         upgradeMagicNumber(-1);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ExhaustOre(this.magicNumber));
+        addToBot(new ExhaustOre(this.magicNumber,()-> addToBot(new SelectCardToHand(new GetPool().returnRandomOresInCombat(3),true))));
     }
 
 }

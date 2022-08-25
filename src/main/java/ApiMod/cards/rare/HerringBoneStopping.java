@@ -25,6 +25,6 @@ public class HerringBoneStopping extends AbstractCards {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        applyToPlayer(new Dig(this.magicNumber));
+        applyToPlayer(new Dig(p,this.magicNumber));
     }
 }

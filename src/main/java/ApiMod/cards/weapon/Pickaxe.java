@@ -19,7 +19,7 @@ public class Pickaxe extends AbstractWeapon {
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
     private float rotationTimer;
     private int previewIndex;
-    private ArrayList<AbstractCard> cardsList = new ArrayList<>();
+    private final ArrayList<AbstractCard> cardsList = new ArrayList<>();
 
     public Pickaxe() {
         super(ID, true, CARD_STRINGS, 1, CardRarity.COMMON);
@@ -29,7 +29,7 @@ public class Pickaxe extends AbstractWeapon {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        applyToPlayer(new PickaxePower(p, this.timesUpgraded, cardsList)); //给予镐子
+        applyToPlayer(new PickaxePower(p, this.timesUpgraded,this.cost, cardsList)); //给予镐子
     }
 
     @Override

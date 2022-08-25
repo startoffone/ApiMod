@@ -1,7 +1,7 @@
 package ApiMod.helpers;
 
 import ApiMod.cards.abstractCards.AbstractOre;
-import ApiMod.cards.ore.*;
+import ApiMod.cards.special.ore.*;
 import ApiMod.patches.Enums;
 import ApiMod.power.PickaxePower;
 import com.megacrit.cardcrawl.cards.AbstractCard;

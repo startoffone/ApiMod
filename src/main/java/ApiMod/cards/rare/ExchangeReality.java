@@ -20,8 +20,7 @@ public class ExchangeReality extends AbstractCards {
     @Override
     public void limitedUpgrade() {
         this.selfRetain = true;
-        rawDescription = CARD_STRINGS.UPGRADE_DESCRIPTION;
-        initializeDescription();
+        this.upgradeDescription(CARD_STRINGS);
     }
 
     @Override

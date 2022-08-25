@@ -1,8 +1,8 @@
 package ApiMod.cards.abstractCards;
 
-import ApiMod.cards.ore.Gold;
-import ApiMod.cards.ore.SilverFish;
-import ApiMod.cards.ore.Stone;
+import ApiMod.cards.special.ore.Gold;
+import ApiMod.cards.special.ore.SilverFish;
+import ApiMod.cards.special.ore.Stone;
 import ApiMod.core.ApiMod;
 import ApiMod.patches.Enums;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;

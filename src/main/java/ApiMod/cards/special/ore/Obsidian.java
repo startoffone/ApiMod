@@ -1,4 +1,4 @@
-package ApiMod.cards.ore;
+package ApiMod.cards.special.ore;
 
 import ApiMod.cards.abstractCards.AbstractOre;
 import ApiMod.core.ApiMod;
@@ -8,23 +8,28 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class RedStone extends AbstractOre {
-    public static final String ID = ApiMod.makeID("RedStone");
+import static com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect.SLASH_HEAVY;
+
+public class Obsidian extends AbstractOre {
+    public static final String ID = ApiMod.makeID("Obsidian");
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    public RedStone() {
-        super(ID, true, CARD_STRINGS, CardType.SKILL, CardTarget.SELF);
-        setupMagicNumber(1);
-        this.tags.add(Enums.Ore_Iron);
+    public Obsidian() {
+        super(ID, true, CARD_STRINGS, CardType.ATTACK, CardTarget.SELF_AND_ENEMY);
+        setupDamage(15);
+        setupBlock(15);
+        this.tags.add(Enums.Ore_Diamond);
     }
 
     @Override
     public void limitedUpgrade() {
-        this.upgradeMagicNumber(1);
+        this.upgradeDamage(5);
+        this.upgradeBlock(5);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        drawCards(this.magicNumber);
+        damageToEnemy(m, SLASH_HEAVY);
+        gainBlock();
     }
 }
