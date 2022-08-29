@@ -14,12 +14,12 @@ public class ComposeOre extends AbstractCards {
 
     public ComposeOre() {
         super(ID, true, CARD_STRINGS, 2, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
-        setupMagicNumber(2);
+        this.exhaust=true;
     }
 
     @Override
     public void limitedUpgrade() {
-        this.upgradeBaseCost(1);
+        this.exhaust=false;
     }
 
     @Override

@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 public class Throw extends AbstractCards {
     public static final String ID = ApiMod.makeID("Throw");
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
+
     public Throw() {
         super(ID, true, CARD_STRINGS, 1, CardType.SKILL, CardRarity.COMMON, CardTarget.NONE);
         setupMagicNumber(3);
@@ -18,13 +19,13 @@ public class Throw extends AbstractCards {
 
     @Override
     public void limitedUpgrade() {
-        upgradeBaseCost(0);
-        upgradeMagicNumber(-1);
+        this.upgradeBaseCost(0);
+        this.upgradeMagicNumber(-1);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        addToBot(new ExhaustAction(1,false));
+        addToBot(new ExhaustAction(1, false));
         drawCards(this.magicNumber);
     }
 }

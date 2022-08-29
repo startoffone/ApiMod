@@ -190,7 +190,8 @@
   },
   "ApiMod:ComposeOre": {
     "NAME": "矿石合成",
-    "DESCRIPTION": "消耗 !M! 张 api_mod:矿石 ，合成新的 api_mod:矿石 。"
+    "DESCRIPTION": "消耗 2张 api_mod:矿石 ，合成新的 api_mod:矿石 。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": "消耗 2张 api_mod:矿石 ，合成新的 api_mod:矿石 。"
   },
   "ApiMod:GoldenTouch": {
   "NAME": "点石成金",
